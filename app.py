@@ -15,8 +15,7 @@ from scipy.signal import find_peaks
 # -----------------
 def get_stock_data(ticker, period):
     stock = yf.Ticker(ticker)
-    df = stock.history(period=period)
-    return df
+    return stock.history(period=period)
 
 # ----------------------------
 # Data Insights with Graphs
@@ -134,7 +133,7 @@ if ticker:
     if df.empty:
         st.warning("⚠️ No data found. Try another ticker or shorter time period.")
     else:
-        insights = stock_insights(df)
+        insights = stock_insights_advanced(df)
 
         st.subheader("Key Metrics")
         col1, col2, col3 = st.columns(3)
